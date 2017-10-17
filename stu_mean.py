@@ -9,9 +9,14 @@ c = db.cursor()    #facilitate db ops
 
 #==========================================================
 
-def grade_print():
+def db_to_dict():
+    db_dict = {}
     for record in  c.execute("SELECT * FROM peeps"):
-        print record[1]
+        student_info = {}
+        student_info["grade"] = record[1]
+        student_info["grade"] = record[2]
+        db_dict[record[0]] = student_info
+    return db_dict
     
 grade_print()
     
